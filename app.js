@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var sabre = require('./public/javascripts/sabre');
+var orchestrator = require('./public/javascripts/orchestrator');
 // require('./javascripts/orchestrator')(app);
 // require('./public/javascripts/sabre')(app);
 
@@ -25,7 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.all("/api/*", sabre, function(req, res, next) {
+app.all("/api/*", orchestrator, function(req, res, next) {
       res.header("Access-Control-Allow-Origin", "*");
       res.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With, Accept");
       res.header("Access-Control-Allow-Methods", "GET, PUT, POST, HEAD, DELETE, OPTIONS");

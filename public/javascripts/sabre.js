@@ -41,8 +41,9 @@ function response(res, err, data) {
     sabreCall('/v1/lists/supported/cities', res);
   });
 
-  router.get('/api/v1/flights', function(req,res) {
-    sabreCall('/v1/shop/flights?origin=BLR&destination=DEL&departuredate=2016-06-10&returndate=2016-06-12', res);
-  });
+  // router.get('/api/v1/flights', function(req,res) {
+  //   // sabreCall('/v1/shop/flights?mode=live&&origin=BLR&destination=DEL&departuredate=2016-06-10&returndate=2016-06-12', res);
+  //   sabreCall('/v1/shop/flights?origin=BLR&destination=DEL&departuredate=2016-06-10&returndate=2016-06-10&onlineitinerariesonly=N&limit=1&offset=1&eticketsonly=N&sortby=totalfare&order=asc&sortby2=departuretime&order2=asc&pointofsalecountry=IN',res);
+  // });
 
 module.exports = router;
