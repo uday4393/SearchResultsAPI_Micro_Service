@@ -4,14 +4,18 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var mongoose = require('mongoose');
 var routes = require('./routes/index');
+var config = require('./Config/config.js')
 var sabre = require('./public/javascripts/sabre');
 var orchestrator = require('./public/javascripts/orchestrator');
+var search = require('./routes/routesAPI.js');
 // require('./javascripts/orchestrator')(app);
 // require('./public/javascripts/sabre')(app);
 
 var app = express();
+mongoose.connect(config.database);
+console.log("mongoose connected");
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,6 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+app.use('/search', search );
 app.all("/api/*", orchestrator, function(req, res, next) {
       res.header("Access-Control-Allow-Origin", "*");
       res.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With, Accept");

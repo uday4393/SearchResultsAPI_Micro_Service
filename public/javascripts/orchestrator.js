@@ -23,6 +23,7 @@ function sabreCall(q, res) {
 };
 
 function response(res, err, data) {
+
   if (err) {
     res.status(200).send({
       'status': false,
@@ -33,7 +34,7 @@ function response(res, err, data) {
     res.status(200).send({
       'status': true,
       'message': 'Success',
-      'results': reformatResponse(data)
+      'results': JSON.parse(data)
     });
   }
 }
