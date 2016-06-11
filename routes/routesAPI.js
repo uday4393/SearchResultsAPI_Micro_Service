@@ -42,7 +42,4 @@ localSearchResults.getResults(function(err,data){
   });
 });
 
-router.get('/test', function(req, res, next){
-  res.send({ msg : 'HIIII'});
-})
 module.exports = router;
